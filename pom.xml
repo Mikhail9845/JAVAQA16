@@ -4,26 +4,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ru.netology.javaqa</groupId>
-    <artifactId>JAVAQA9</artifactId>
+    <groupId>org.example</groupId>
+    <artifactId>JAVAQA16</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.7.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>RELEASE</version>
+            <version>5.9.0-M1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -37,21 +31,18 @@
                     <failIfNoTests>true</failIfNoTests>
                 </configuration>
             </plugin>
-
-
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.5</version>
-
                 <executions>
                     <execution>
                         <id>prepare-agent</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
-
                     </execution>
+
                     <execution>
                         <id>report</id>
                         <phase>verify</phase>
@@ -59,6 +50,7 @@
                             <goal>report</goal>
                         </goals>
                     </execution>
+
                     <execution>
                         <id>check</id>
                         <goals>
@@ -69,7 +61,7 @@
                                 <rule>
                                     <limits>
                                         <limit>
-                                            <counter>LINE</counter>
+                                            <counter>BRANCH</counter>
                                             <value>COVEREDRATIO</value>
                                             <minimum>100%</minimum>
                                         </limit>
@@ -78,13 +70,9 @@
                             </rules>
                         </configuration>
                     </execution>
-
-
                 </executions>
             </plugin>
         </plugins>
-
-
     </build>
 
 </project>

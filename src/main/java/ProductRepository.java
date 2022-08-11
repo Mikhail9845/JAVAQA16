@@ -14,17 +14,17 @@ public class ProductRepository {
     }
     public Product findById(int id){
         for (Product product : products) {
-                if (product.getId() == id) {
-                    return product;
-                }
+            if (product.getId() == id) {
+                return product;
             }
-            return null;
         }
+        return null;
+    }
 
 
     public void removeById (int id){
         if(findById(id) == null){
-            throw new NotFoundException("Товара с id" + id + "нет");
+            throw new NotFoundException ("Товара с id" + id + "нет");
         }
 
         Product [] tmp = new Product[products.length - 1];

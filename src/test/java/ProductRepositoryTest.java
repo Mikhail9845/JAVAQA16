@@ -1,9 +1,5 @@
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-
-
+import org.junit.jupiter.api.Test;
 public class ProductRepositoryTest {
     Product product1 = new Product(532, "Book1", 324);
     Product product2 = new Product(545, "Smartphone", 1432);
@@ -18,7 +14,7 @@ public class ProductRepositoryTest {
         Product[] expected = {product1, product2, product3};
         Product[] actual = repo.findAll();
 
-        assertArrayEquals(expected, actual);
+        Assertions.assertArrayEquals(expected, actual);
 
     }
 
@@ -30,7 +26,7 @@ public class ProductRepositoryTest {
         Product[] expected = {product1};
         Product[] actual = repo.findAll();
 
-        assertArrayEquals(expected, actual);
+        Assertions.assertArrayEquals(expected, actual);
 
     }
     @Test
@@ -45,20 +41,39 @@ public class ProductRepositoryTest {
         Product[] actual = repo.findAll();
 
 
-        assertArrayEquals(expected, actual);
+        Assertions.assertArrayEquals(expected, actual);
 
     }
-
     @Test
-    public void removeById() {
+    public void removeByIdProduct2() {
         ProductRepository repo = new ProductRepository();
         repo.add(product1);
         repo.add(product2);
         repo.add(product3);
+        repo.removeById(product3.getId());
+
+        Product[] expected = {product1,product2};
+        Product[] actual = repo.findAll();
+
+
+        Assertions.assertArrayEquals(expected, actual);
+
+    }
+    @Test
+
+    public void removeByNonExistentId(){
+
+        ProductRepository repo = new ProductRepository();
+
+        repo.add(product1);
+        repo.add(product2);
+        repo.add(product3);
+
         Assertions.assertThrows(NotFoundException.class, () -> {
-            repo.removeById(-100);
+            repo.removeById(567);
         });
     }
 
 
-    }
+
+}
